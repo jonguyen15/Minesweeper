@@ -36,9 +36,6 @@ public void setBombs()
      
    if(!bombs.contains(buttons[r][c]) && !bombs.contains(c))
    bombs.add(buttons[r][c]);
-
-   System.out.println("row "+ r);
-   System.out.println("colummn "+c);
 }
 }
 public void draw ()
