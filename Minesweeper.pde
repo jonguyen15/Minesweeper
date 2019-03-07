@@ -47,14 +47,28 @@ public void draw ()
     if(isWon())
         displayWinningMessage();
 }
-public boolean isWon()
-{
-    
-    
-    
-    
+public boolean isWon(){
+    int countM = 0;
+    int countC = 0;
+    for(int r = 0; r < NUM_ROWS; r++){
+        for(int c = 0; c < NUM_COLS; c++){
+            if(buttons[r][c].isMarked())
+                countM++;
+            else if(buttons[r][c].isClicked())
+                countC++;
+        }
+    }
+    int countB = 0;
+    for(int i = 0; i < bombs.size(); i++){
+        if((bombs.get(i)).isMarked())
+            countB++;
+    }
+    if((countB == bombs.size() && countM + countC == NUM_ROWS*NUM_COLS && countB == countM) && bombs.size() == (NUM_ROWS*NUM_COLS)-countC){
+        return true;
+    }
     return false;
 }
+
 public void displayLosingMessage(){
     gameOver = true;
     fill(0);
